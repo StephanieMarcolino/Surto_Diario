@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, StyleSheet } from 'react-native';
+import { View, Text, TextInput, TouchableOpacity, ImageBackground } from 'react-native';
 import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth } from './Firebase';
 import styles from './Estilo'
@@ -15,9 +15,16 @@ const CadastroScreen = ({navigation}) => {
     console.log('Cadastro Pressed');
   };
 
+  const image = require('./assets/capa-livro.png')
+
   return (
-    <View style={styles.container}>
-      <Text>Cadastro</Text>
+    <ImageBackground
+    source={image} 
+    style={styles.backgroundImage}
+  >
+    <View style={[styles.container, {justifyContent: 'flex-end'}]}>
+      <View style={styles.card2}>
+      <Text style={{fontSize: 40, textAlign: 'left'}}>Cadastro </Text>
       <TextInput
         placeholder="E-mail"
         value={email}
@@ -31,8 +38,17 @@ const CadastroScreen = ({navigation}) => {
         secureTextEntry
         style={styles.input}
       />
-      <Button title="Cadastrar" onPress={handleCadastro} />
+        
+      <TouchableOpacity
+          style={styles.button1}
+          onPress={handleCadastro}
+        >
+          <Text style={styles.buttonText}>Criar Conta</Text>
+        </TouchableOpacity>
+      </View>
     </View>
+    </ImageBackground>
+    
   );
 };
 

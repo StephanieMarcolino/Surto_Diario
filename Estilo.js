@@ -1,18 +1,11 @@
 import { StyleSheet } from 'react-native'
 
 const styles = StyleSheet.create({
-  titulo: {
-    fontSize: 60,
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color:'white'
-  },
   subtitulo: {
-    fontSize: 20,
+    fontSize: 18,
     marginBottom: 50,
-    marginTop: 30,
     textAlign: 'center',
-    color:'white'
+    color:'black'
   },
   imagem: {
     flex:1,
@@ -97,9 +90,23 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around'
   },
   buttonText: {
-    color: '#000', // Cor do texto do botão (pode ser ajustada)
+    color: '#000', 
     fontSize: 18,
     fontWeight: 'bold',
+  },
+
+  cardTexto: {
+    backgroundColor: '#E0E7EC',
+    borderRadius: 10,
+    padding: 20,
+    marginBottom: 20,
+    width: '80%',
+    height: 400,
+  },
+  textInputTexto: {
+    fontSize: 16,
+    lineHeight: 22,
+    textAlignVertical: 'top', // Permite rolar verticalmente no TextInput
   },
   
 });

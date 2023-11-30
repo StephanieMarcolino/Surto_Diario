@@ -1,19 +1,25 @@
-// Importações necessárias
 import React, { useState } from 'react';
-import { View, Text, TextInput, Button, ImageBackground, TouchableOpacity  } from 'react-native';
+import { View, Text, TextInput, ImageBackground, TouchableOpacity  } from 'react-native';
 import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth } from './Firebase';
 import styles from './Estilo'
+import { getAuth, onAuthStateChanged } from 'firebase/auth';
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const auth = getAuth();
 
   const handleLogin = () => {
     signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
         const user = userCredential.user
-        console.log('Login Pressed');
+        const userID = userCredential.user.uid;
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            const userID = user.uid;
+          }
+        });
+        navigation.navigate('Calendario', {email , uid: userID})
     })
     .catch((error) => {
         const errorCode = error.code
